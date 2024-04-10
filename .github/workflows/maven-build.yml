@@ -3,11 +3,7 @@
 name: Maven Build
 
 on:
-  workflow_call:
-    inputs:
-      java-version:
-        required: true
-        type: string
+  workflow_dispatched:
 
 jobs:
   build:
