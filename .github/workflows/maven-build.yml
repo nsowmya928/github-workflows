@@ -1,23 +1,12 @@
-# .github/workflows/maven-build.yml
+# .github/workflows/build.yml
 
-name: Maven Build
+name: Build Project
 
-on:
+on: 
   workflow_dispatched:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        java-version: ${{ inputs.java-version }}
-        distribution: 'adopt'
-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+  call-reusable-workflow:
+    uses: brainupgrade-in/github-workflows/.github/workflows/maven-build.yml@main
+    with:
+      java-version: '11'
